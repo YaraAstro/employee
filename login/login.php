@@ -22,11 +22,11 @@
                 <form action="./login_action.php" method="post">
                     <div class="input-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="Enter your email">
+                        <input type="email" id="email" name="email" placeholder="Enter your email">
                     </div>
                     <div class="input-group">
                         <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="Enter your password">
+                        <input type="password" id="password" name="password" placeholder="Enter your password">
                     </div>
                     <div class="actions">
                         <button type="submit">Log in</button>

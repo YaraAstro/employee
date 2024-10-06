@@ -84,7 +84,7 @@ include "../includes/config.php";
                     </div>
                     <div class="dropdown">
                         <a href="">Profile</a>
-                        <a href="">Log out</a>
+                        <a href="../includes/log_out.php">Log out</a>
                     </div>
                 </div>
 
