@@ -64,7 +64,11 @@ $image_folder = "../../documents/$type/profile/";
                     <input type="date" id="created_at" name="created_at" value="<?php echo $data['created_at']; ?>"
                         required>
 
-                    <button type="submit" name="update">Update Details</button>
+                    <button type="submit" class="update-profile"name="update">Update Details</button>
+                </form>
+
+                <form action="delete.php" method="POST" >
+                <button type="delete" class="delete-profile"  name="update" value="Update">Delete Profile</button>
                 </form>
 
             </div>
