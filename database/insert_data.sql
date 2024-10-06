@@ -15,3 +15,10 @@ VALUES
 ('R004', 'Diana Grey', '7897897890', 'Health Solutions', 'diana.grey@healthsolutions.com', 'We need dedicated healthcare professionals.', '../images/user_placeholder.jpg', 'recruiterpass4'),
 ('R005', 'Ethan Blue', '6546546543', 'EduTech', 'ethan.blue@edutech.com', 'Looking for innovative educators.', '../images/user_placeholder.jpg', 'recruiterpass5'),
 ('R006', 'Fiona Red', '3214569870', 'Creative Agency', 'fiona.red@creativeagency.com', 'Join our dynamic creative team!', '../images/user_placeholder.jpg', 'recruiterpass6');
+
+INSERT INTO packages (id, name, monthly_rate, features)
+VALUES 
+('PKG01', 'Starter', 20.00, '2 Advertisements, One Advertisement will pin on the page, 24/7 service'),
+('PKG02', 'Premium', 35.00, '5 Advertisements, Three Advertisements will pin on the page, 24/7 service, Priority for Recruitments');
+
+

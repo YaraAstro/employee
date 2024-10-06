@@ -12,10 +12,8 @@ include "../includes/config.php";
 
     <style>
         <?php
-        
-        session_start();
 
-        if (isset($_SESSION['user_id'], $_SESSION['user_type'])) {
+        if (isset($is_logged_in) && $is_logged_in) {
             
             echo '
             .header-action:nth-child(1) {
@@ -23,23 +21,16 @@ include "../includes/config.php";
             }
             ';
 
-            $user_sql = "SELECT * FROM " . $_SESSION['user_type'] . "WHERE user_id = '" . $_SESSION['user_id'] . "'";
-            $user_details = $conn -> query($sql);
-
-            if ( ! ($user_details -> num_rows > 0) ) {
-                echo "Internal Error !!";
-            } else {
-                $user = $user_details -> fetch_assoc();
-            }
-
-        } else {
+        }else{
+            
             echo '
             .header-action:nth-child(2) {
                 display: none;
             }
             ';
-        }
 
+        }
+            
         ?>
     </style>
 
@@ -62,7 +53,7 @@ include "../includes/config.php";
                 <a href="">About</a>
                 <a href="">Companies</a>
                 <a href="">Jobs</a>
-                <a href="">Pricing</a>
+                <a href="../pages/pricing.php">Pricing</a>
                 <a href="">Contact Us</a>
             </div>
 
@@ -77,13 +68,13 @@ include "../includes/config.php";
                 <!-- if user has already logged in -->
                 <div class="header-action">
                     <div class="profile-image">
-                        <img src="<?php echo $user['img_path'] ?>" alt="profile_picture">
+                        <img src="<?php echo $user['image'] ?>" alt="profile_picture">
                     </div>
                     <div class="icon">
                         <i class="fa-solid fa-caret-down"></i>
                     </div>
                     <div class="dropdown">
-                        <a href="">Profile</a>
+                        <a href="<?php echo $dashboard_path ?>">Profile</a>
                         <a href="../includes/log_out.php">Log out</a>
                     </div>
                 </div>

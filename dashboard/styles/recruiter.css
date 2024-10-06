@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+
+/*
+    font-family: "Ubuntu", sans-serif;
+    font-family: "Yeseva One", serif;
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+header {
+    position: fixed;
+}
+
+main {
+    width: 100%;
+    padding-top: 70px;
+    min-height: calc(100vh - 71.41px);
+    display: flex;
+    align-items: flex-start;
+    font-family: "Ubuntu", sans-serif;
+}
+
+main .frame:nth-child(1) {
+    flex: 1;
+}
+
+main .frame:nth-child(2) {
+    flex: 7;
+}
+
+/* side bar */
+
+.frame .side_bar {
+    position: fixed;
+    z-index: 50;
+    width: 12.5%;
+    min-height: calc(100vh - 71.41px);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.side_bar a {
+    flex: 1;
+    background-color: #422714;
+    color: #ffe1cb;
+    font-family: "Ubuntu", sans-serif;
+    padding-left: 10px;
+    font-size: 1em;
+    display: flex;
+    font-weight: 500;
+    align-items: center;
+    transition: .35s ease-in-out all;
+}
+
+.side_bar a:hover {
+    background-color: whitesmoke;
+    color: #422714;
+}
+
+/* profile data */
+
+.frame:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 25px 0;
+    justify-content: space-around;
+}
+
+.sub_frame:nth-child(1) {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.sub_frame:nth-child(1) img {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.sub_frame:nth-child(1) h3 {
+    font-size: 3em;
+    text-align: right;
+    text-transform: uppercase;
+}
+
+.sub_frame:nth-child(1) p {
+    font-size: 1.25em;
+    text-align: right;
+    margin-right: 20px;
+    text-transform: capitalize;
+}
+
+.sub_frame:nth-child(1) p::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    right: -25px;
+    height: 100%;
+    background-color: #422714;
+}
+
+/* Received Applications */
+
+.sub_frame h3 {
+    margin-bottom: 15px;
+}
+
+.sub_frame:nth-child(2),
+.sub_frame:nth-child(3),
+.sub_frame:nth-child(3) {
+    width: 70vw;
+    border-radius: 15px;
+    background-color: rgb(219, 203, 181);
+    padding: 25px;
+}
+
+.sub_frame:nth-child(2) .box_frame {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.sub_frame:nth-child(2) .box_frame .row {
+    display: flex;
+    gap: 5px;
+    width: 100%;
+    border-radius: 5px;
+    padding: 3px 5px;
+}
+
+.sub_frame:nth-child(2) .box_frame .row .data_box {
+    flex: 1;
+    border-right: 1px solid #422714;
+    width: 235.55px;
+}
+
+.sub_frame:nth-child(2) .box_frame .row .data_box p {
+    max-width: 235.55px;
+    overflow-x: hidden;
+}
+
+.sub_frame:nth-child(2) .box_frame .row .data_box:last-child {
+    border-right: none;
+}
+
+.sub_frame:nth-child(2) .box_frame .row .data_box:last-child {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.sub_frame:nth-child(2) .box_frame .row .data_box:last-child .action {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+    background-color: #422714;
+    color: #ffe1cb;
+    border-radius: 10px;
+    font-size: 1.25em;
+    transition: all ease-in-out .35s;
+}
+
+.sub_frame:nth-child(2) .box_frame .row .data_box:last-child .action p {
+    font-size: .75em;
+}
+
+.sub_frame:nth-child(2) .box_frame .title_row {
+    background-color: #422714;
+    color: #ffe1cb;
+    font-weight: 400;
+    letter-spacing: 1px;
+    padding: 10px;
+}
+
+.sub_frame:nth-child(2) .box_frame .row .data_box:last-child .action:hover {
+    box-shadow: 0 2px 5px rgb(65, 65, 65);
+}
+
+/* advertisments */
+
+.sub_frame:nth-child(3) .button_row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.sub_frame:nth-child(3) .button_row .button {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all ease-in-out .5s;
+}
+
+.sub_frame:nth-child(3) .button_row .button:hover {
+    color: #ffe1cb;
+    background-color: #422714;
+}
+
+.sub_frame:nth-child(3) .post_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.sub_frame:nth-child(3) .post_card {
+    width: 275px;
+    min-height: 350px;
+    padding: 15px;
+    border-radius: 25px;
+    background-color: #f0dfd4;
+    color: #0e0b08;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    transition: all ease-in-out .5s;
+}
+
+.sub_frame:nth-child(3) .post_card:hover {
+    box-shadow: 3px 5px 10px rgba(48, 33, 24, 0.74);
+}
+
+.post_card .title {
+    font-weight: 600;
+    font-size: 2em;
+    text-transform: capitalize;
+}
+
+.post_card .post {
+    text-align: right;
+    width: fit-content;
+    padding: 5px 10px;
+    background-color: #382c23;
+    color: #f0dfd4;
+    font-size: .75em;
+    text-transform: capitalize;
+    margin: 10px 0px;
+}
+
+.post_card .desc {
+    font-size: 1em;
+    text-align: right;
+}
+
+.post_card .actions {
+    width: 100%;
+    margin: 10px 0;
+    gap: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.post_card .actions .button {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    background-color: #382c23;
+    color: #f0dfd4;
+    padding: 10px;
+    border-radius: 5px;
+    gap: 5px;
+    transition: all ease-in-out .35s;
+}
+
+.post_card .actions .button:hover {
+    box-shadow: 0 3px 10px rgb(73, 73, 73);
+}
+
+/* package details */
+
+.sub_frame:nth-child(4) {
+    width: 50vw;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.sub_frame:nth-child(4) .pckg {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #382c23;
+    color: #f0dfd4;
+    text-transform: capitalize;
+    transition: all ease-in-out .35s;
+}
+
+.sub_frame:nth-child(4) a:hover {
+    box-shadow: 0 2px 5px rgb(73, 73, 73);
+}
+

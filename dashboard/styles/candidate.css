@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+
+/*
+    font-family: "Ubuntu", sans-serif;
+    font-family: "Yeseva One", serif;
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+main {
+    width: 100%;
+    min-height: 50vh;
+    display: flex;
+    align-items: flex-start;
+    font-family: "Ubuntu", sans-serif;
+}
+
+main .frame:nth-child(1) {
+    flex: 1;
+}
+
+main .frame:nth-child(2) {
+    flex: 7;
+}

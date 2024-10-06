@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['user_id'] = $candidate['id'];
         $_SESSION['user_type'] = 'candidate';
 
-        header("Location: ../login/login.php");
+        header("Location: ../dashboard/candidate_dashboard.php");
         exit();
 
     } else {
@@ -35,9 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $recruiter = $fetch_recruiter -> fetch_assoc();
 
             $_SESSION['user_id'] = $recruiter['id'];
-            $_SESSION['user_type'] = 'candidate';
+            $_SESSION['user_type'] = 'recruiter';
 
-            header("Location: ../login/login.php");
+            header("Location: ../dashboard/recruiter_dashboard.php");
             exit();
 
         } else {

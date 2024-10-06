@@ -10,6 +10,7 @@ CREATE TABLE candidate (
     experience INT,
     image VARCHAR(255),
     cv_file VARCHAR(255), 
+    package VARCHAR(100),
     user_comment TEXT,
     user_password VARCHAR(100),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -24,6 +25,15 @@ CREATE TABLE recruiter (
     email VARCHAR(100) NOT NULL UNIQUE,
     add_message TEXT,
     image VARCHAR(255),
+    package VARCHAR(100),
     user_password VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE packages (
+    id VARCHAR(5) PRIMARY KEY,
+    name VARCHAR(50),
+    monthly_rate DECIMAL(10, 2),
+    features TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
