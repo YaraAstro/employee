@@ -36,3 +36,33 @@ main .frame:nth-child(1) {
 main .frame:nth-child(2) {
     flex: 7;
 }
+
+/* side bar */
+
+.frame .side_bar {
+    position: fixed;
+    z-index: 50;
+    width: 12.5%;
+    min-height: calc(100vh - 71.41px);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.side_bar a {
+    flex: 1;
+    background-color: #422714;
+    color: #ffe1cb;
+    font-family: "Ubuntu", sans-serif;
+    padding-left: 10px;
+    font-size: 1em;
+    display: flex;
+    font-weight: 500;
+    align-items: center;
+    transition: .35s ease-in-out all;
+}
+
+.side_bar a:hover {
+    background-color: whitesmoke;
+    color: #422714;
+}

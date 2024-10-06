@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sing Up | RECRUITMENT COMPANY</title>
-
+    <title>Sign Up | RECRUITMENT COMPANY</title>
     <link rel="shortcut icon" href="../images/logo/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./registerStyles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -15,119 +14,129 @@
             <div class="content">
                 <h2>Every new journey is a new opportunity.</h2>
                 <p>Let's get you connected!</p>
+                <div id="reg_as" class="reg_as">
+                    Register as <span>Recruiter</span>
+                </div>
             </div>
         </div>
         <div class="right-section">
             <div class="signup-box">
-                <h3>Sign Up</h3>
-                <form action=".register_action.php" method="post">
-
+                <h3>Sign Up as <span>Candidate</span></h3>
+                <form action="./register_action.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" id="regType" name="regType" value="candidate">
 
                     <!-- sign up as candidate (job seeker)  -->
-                    <fieldset>
-                        
+                    <fieldset id="candi_field" style="display: flex;">
                         <div class="input-group">
-                            <label for="first-name"><i class="fas fa-user"></i> First Name</label>
-                            <input type="text" id="first-name" placeholder="Enter your first name">
+                            <label for="first-name"><i class="fas fa-user"></i> First Name :</label>
+                            <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" >
+                        </div> 
+                        <div class="input-group">
+                            <label for="last-name"><i class="fas fa-user"></i> Last Name :</label>
+                            <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" >
                         </div>
-                        
                         <div class="input-group">
-                            <label for="last-name"><i class="fas fa-user"></i> Last Name</label>
-                            <input type="text" id="last-name" placeholder="Enter your last name">
-                        </div>
-
-                        <div class="input-group">
-                            <label><i class=""></i> Gender :</label>
-                            <div class="role-select">
+                            <label><i class="fas fa-venus-mars"></i> Gender :</label>
+                            <div class="gender-select">
                                 <div class="input-radio">
-                                    <input type="radio" id="male" name="gender" value="male">
+                                    <input type="radio" id="male" name="gender" value="male" >
                                     <label for="male">Male</label>
                                 </div>
                                 <div class="input-radio">
-                                    <input type="radio" id="female" name="gender" value="female">
+                                    <input type="radio" id="female" name="gender" value="female" >
                                     <label for="female">Female</label>
                                 </div>
                             </div>
                         </div>
-
                         <div class="input-group">
-                            <label for="date_of_birth"><i class=""></i>DoB</label>
-                            <input type="date" name="date_of_birth" id="date_of_birth">
+                            <label for="date_of_birth"><i class="fas fa-calendar-alt"></i> Date of Birth :</label>
+                            <input type="date" name="date_of_birth" id="date_of_birth" >
                         </div>
-
                         <div class="input-group">
-                            <label for="mobile_no"><i class=""></i>DoB</label>
-                            <input type="tel" name="mobile_no" id="mobile_no">
+                            <label for="mobile_no"><i class="fas fa-phone"></i> Contact :</label>
+                            <input type="tel" name="mobile_no" id="mobile_no" maxlength="10" pattern="[0-9]{10}" placeholder="10 digit phone number" >
                         </div>
-
                         <div class="input-group">
-                            <label for="email"><i class="fas fa-envelope"></i> Email</label>
-                            <input type="email" id="email" placeholder="Enter your email">
+                            <label for="email"><i class="fas fa-envelope"></i> Email :</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" >
                         </div>
-
                         <div class="input-group">
-                            <label for="experience"><i class=""></i>DoB</label>
-                            <input type="number" name="experience" id="experience">
+                            <label for="experience"><i class="fas fa-briefcase"></i> Experience (Years):</label>
+                            <input type="number" name="experience" id="experience" min="0">
                         </div>
-
                         <div class="input-group">
-                            <label for="cv_file"><i class=""></i>DoB</label>
-                            <input type="file" name="cv_file" id="cv_file">
+                            <label for="cv_file"><i class="fas fa-file-upload"></i> Resume :</label>
+                            <input type="file" name="cv_file" id="cv_file"  accept=".pdf,.doc,.docx">
                         </div>
-
                         <div class="input-group">
-                            <label for="add_comment"><i class=""></i>DoB</label>
-                            <textarea name="add_comment" id="add_comment"></textarea>
+                            <label for="add_comment"><i class="fas fa-comment-dots"></i> Comment :</label>
+                            <textarea name="add_comment" id="add_comment" placeholder="Enter your comment"></textarea>
                         </div>
-
                     </fieldset>
 
                     <!-- sign up as recruiter (company) -->
-                    <fieldset>
-                    
+                    <fieldset id="recruit_field" style="display: none;">
                         <div class="input-group">
-                            <label for="first-name"><i class="fas fa-user"></i> First Name</label>
-                            <input type="text" id="first-name" placeholder="Enter your first name">
+                            <label for="name"><i class="fas fa-user"></i> Name :</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your name">
                         </div>
-
                         <div class="input-group">
-                            <label for="mobile_no"><i class=""></i>DoB</label>
-                            <input type="tel" name="mobile_no" id="mobile_no">
+                            <label for="mobile_no_recruiter"><i class="fas fa-phone"></i> Contact :</label>
+                            <input type="tel" name="mobile_no_recruiter" id="mobile_no_recruiter" maxlength="10" pattern="[0-9]{10}" placeholder="10 digit phone number">
                         </div>
-
                         <div class="input-group">
-                            <label for="first-name"><i class="fas fa-user"></i> Company</label>
-                            <input type="text" id="first-name" placeholder="Enter your first name">
+                            <label for="company"><i class="fas fa-building"></i> Company :</label>
+                            <input type="text" id="company" name="company" placeholder="Enter your company name">
                         </div>
-
                         <div class="input-group">
-                            <label for="email"><i class="fas fa-envelope"></i> Email</label>
-                            <input type="email" id="email" placeholder="Enter your email">
+                            <label for="email_recruiter"><i class="fas fa-envelope"></i> Email :</label>
+                            <input type="email" id="email_recruiter" name="email_recruiter" placeholder="Enter your email">
                         </div>
-
                         <div class="input-group">
-                            <label for="add_comment"><i class=""></i>DoB</label>
-                            <textarea name="add_comment" id="add_comment"></textarea>
+                            <label for="comment_recruiter"><i class="fas fa-comment-dots"></i> Message :</label>
+                            <textarea name="comment" id="comment_recruiter" placeholder="Enter your message"></textarea>
                         </div>
-
                     </fieldset>
-                    
+
                     <div class="input-group">
                         <label for="pass_word"><i class="fas fa-lock"></i> Password</label>
-                        <input type="password" id="pass_word" name="pass_word" placeholder="Enter your password">
+                        <input type="password" id="pass_word" name="pass_word" placeholder="Enter your password" >
                     </div>
-
                     <div class="input-group">
                         <label for="confirm-password"><i class="fas fa-lock"></i> Confirm Password</label>
-                        <input type="password" id="confirm-password" placeholder="Confirm your password">
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" >
                     </div>
-                    
+
                     <button type="submit">Sign Up</button>
                     <p>Already have an account? <a href="#">Login</a></p>
                 </form>
             </div>
         </div>
     </div>
+
+    <script>
+        let toggleReg = document.getElementById('reg_as');
+        toggleReg.addEventListener('click', () =>{
+            let btnText = document.querySelector('#reg_as span');
+            let topic = document.querySelector('.signup-box h3 span');
+            let candi_field = document.getElementById('candi_field');
+            let recruit_field = document.getElementById('recruit_field');
+            let typePut = document.getElementById('regType');
+
+            if(btnText.textContent == 'Candidate'){
+                btnText.textContent = 'Recruiter';
+                topic.textContent = 'Candidate';
+                typePut.value = 'Candidate';
+                candi_field.style.display = 'flex';
+                recruit_field.style.display = 'none';
+            } else {
+                btnText.textContent = 'Candidate';
+                topic.textContent = 'Recruiter';
+                typePut.value = 'Recruiter';
+                candi_field.style.display = 'none';
+                recruit_field.style.display = 'flex';
+            }
+        })
+    </script>
 </body>
 </html>

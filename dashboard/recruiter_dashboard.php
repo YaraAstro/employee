@@ -27,7 +27,7 @@ include '../includes/get_user.php';
                 <a href="">Complaints</a>
                 <a href="">Notifications</a>
                 <a href="">FAQ</a>
-                <a href="">Settings</a>
+                <a href="../recruiter/recruiter_update.php">Settings</a>
             </div>
         </div>
         <div class="frame">
