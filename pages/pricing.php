@@ -45,7 +45,7 @@ if ($fetch_pkgs->num_rows > 0) {
         }
 
         echo "</ul>
-            <a class=\"button\" href='../includes/add_pkg.php?pkgID={$pkgs['id']}'>Choose</a>
+            <a class=\"button\" href='../payment/payment.php?pkgID={$pkgs['id']}'>Choose</a>
         </div>
         ";
 

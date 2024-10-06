@@ -30,10 +30,25 @@ CREATE TABLE recruiter (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- subscription plans 
 CREATE TABLE packages (
     id VARCHAR(5) PRIMARY KEY,
     name VARCHAR(50),
     monthly_rate DECIMAL(10, 2),
     features TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- payment records
+CREATE TABLE payment (
+    id VARCHAR(10) PRIMARY KEY,
+    user_id VARCHAR(5) NOT NULL,
+    pkg_id VARCHAR(5) NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    credit_card_number VARCHAR(20) NOT NULL,
+    expire_month DATE NOT NULL,
+    ccv VARCHAR(3) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    payment_status ENUM('pending', 'completed', 'failed') DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 );
