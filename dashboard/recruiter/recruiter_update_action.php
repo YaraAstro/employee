@@ -69,7 +69,7 @@ if (isset($_POST['update'])) {
             WHERE id = ?";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssssi", $user_name, $mobile_no, $company,  $add_message, $image, $package, $user_password, $created_at, $uid);
+    $stmt->bind_param("sssssssss", $user_name, $mobile_no, $company,  $add_message, $image, $package, $user_password, $created_at, $uid);
 
     // Check for duplicate email before executing
     //$stmt->execute();
