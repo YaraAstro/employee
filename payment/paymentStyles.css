@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+
+/*
+    font-family: "Ubuntu", sans-serif;
+    font-family: "Yeseva One", serif;
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+}
+
+header {
+    width: 100% !important;
+}
+
+main {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Ubuntu", sans-serif;
+}
+
+/* content */
+
+.frame {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    box-shadow: 0 3px 5px rgba(39, 32, 19, 0.575);
+}
+
+.frame .sub_frame {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    min-height: 50vh;
+}
+
+/* package details */
+
+.frame .sub_frame:nth-child(1) {
+    background-color: rgb(104, 91, 71);
+}
+
+.frame .sub_frame:nth-child(1) .price {
+    font-size: 3em;
+    font-weight: 500;
+    width: calc(100% - 25px);
+    background-color: rgb(202, 192, 180);
+    color: rgb(104, 91, 71);
+    right: 25px;
+    padding: 10px 0px;
+    padding-left: 30px;
+}
+
+.frame .sub_frame:nth-child(1) .details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: right;
+    padding-right: 50px;
+}
+
+.frame .sub_frame:nth-child(1) .details p:nth-child(1) {
+    font-size: 1em;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: rgb(158, 139, 116);
+}
+
+.frame .sub_frame:nth-child(1) .details p:nth-child(2) {
+    font-size: 1.5em;
+    text-transform: capitalize;
+    color: rgb(202, 192, 180);
+}
+
+/* form */
+
+.frame .sub_frame:nth-child(2) {
+    padding-left: 25px;
+}
+
+.frame .sub_frame:nth-child(2) h3 {
+    font-size: 1.75em;
+    font-weight: 500;
+}
+
+.frame .sub_frame:nth-child(2) form {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.frame .sub_frame:nth-child(2) form .input_box {
+    display: flex;
+    flex-direction: column;
+}
+
+.frame .sub_frame:nth-child(2) form .input_box label {
+    font-size: .85em;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.frame .sub_frame:nth-child(2) form .input_box input {
+    text-align: right;
+    font-size: 1.15em;
+    padding: 1px;
+    border: none;
+    border-bottom: 1px solid rgb(37, 25, 16);
+}
+
+.frame .sub_frame:nth-child(2) form .input_box input:focus {
+    outline: none;
+}
+
+.frame .sub_frame:nth-child(2) form .row {
+    display: flex;
+    width: 100%;
+    gap: 15px;
+    align-items: center;
+}
+
+.frame .sub_frame:nth-child(2) form .row .input_box {
+    flex: 1;
+}
+
+.frame .sub_frame:nth-child(2) form .row .input_box input {
+    width: 100%;
+}
+
+
+.frame .sub_frame:nth-child(2) form button {
+    width: 90%;
+    padding: 10px;
+    margin: 5%;
+    outline: none;
+    border: none;
+    background-color: rgb(104, 91, 71);
+    color: rgb(204, 187, 176);
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-radius: 5px;
+}
+
+
+

@@ -5,6 +5,7 @@ include '../includes/config.php';
 session_start();
 
 if (isset($_SESSION['user_id'], $_SESSION['user_type'])) {
+
     $is_logged_in = true;
 
     if ($_SESSION['user_type'] === 'candidate') {
@@ -29,6 +30,13 @@ if (isset($_SESSION['user_id'], $_SESSION['user_type'])) {
     // Fetch user details if found
     if ($user_details->num_rows > 0) {
         $user = $user_details->fetch_assoc();
+
+        if ($_SESSION['user_type'] === 'recruiter') {
+            $full_name = $user['user_name'];
+        } else {
+            $full_name = $user['first_name'].' '.$user['last_name'];
+        }
+
     } else {
         echo "Internal Error: User not found!";
         exit();
