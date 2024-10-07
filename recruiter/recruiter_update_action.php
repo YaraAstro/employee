@@ -4,57 +4,39 @@ session_start();
 include '../includes/config.php'; // Include your database connection
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
     // Retrieve POST data
-    $userId = $_POST['user_id']; // Keep as string
+    $userId = $_POST['user_id'];
     $userName = $_POST['user_name'];
     $mobileNo = $_POST['mobile_no'];
     $company = $_POST['company'];
     $email = $_POST['email'];
     $addMessage = $_POST['add_message'];
 
-    $image_path = null;
 
-    // Check if an image was uploaded
     if (isset($_FILES['userImg']) && $_FILES['userImg']['error'] === UPLOAD_ERR_OK) {
+        // Handle file upload
         $imageExtension = pathinfo($_FILES['userImg']['name'], PATHINFO_EXTENSION);
         $profile_picture = $userId . '_profile_picture.' . $imageExtension;
         $image_path = '../documents/recruiter/profile/' . $profile_picture;
 
         // Move the uploaded file
-        if (!move_uploaded_file($_FILES['userImg']['tmp_name'], $image_path)) {
-            echo 'Failed to move uploaded file.';
-            exit();
-        }
+        move_uploaded_file($_FILES['userImg']['tmp_name'], $image_path);
     } else {
-        // Fetch the existing image path from the database
+        // Fetch existing image if no new upload
         $result = $conn->query("SELECT image FROM recruiter WHERE id = '$userId'");
         if ($result && $row = $result->fetch_assoc()) {
-            $image_path = $row['image']; // Retain existing image path
+            $image_path = $row['image'];
         }
     }
 
-    // Prepare the SQL statement
+    // Update the database
     $update_sql = "UPDATE recruiter SET user_name = ?, mobile_no = ?, company = ?, email = ?, add_message = ?, image = ? WHERE id = ?";
-    
     if ($update_stmt = $conn->prepare($update_sql)) {
-        // Bind parameters
-        $update_stmt->bind_param("ssssssi", $userName, $mobileNo, $company, $email, $addMessage, $image_path, $userId);
-
-        // Execute the statement
-        if ($update_stmt->execute()) {
-            header("Location: ../dashboard/recruiter_dashboard.php");
-            exit();
-        } else {
-            echo 'Something went wrong during the update!';
-        }
-
-        // Close the statement
-        $update_stmt->close();
-    } else {
-        echo 'Failed to prepare SQL statement!';
+        $update_stmt->bind_param("sssssss", $userName, $mobileNo, $company, $email, $addMessage, $image_path, $userId);
+        $update_stmt->execute();
+        header("Location: ../dashboard/recruiter_dashboard.php");
+        exit();
     }
 }
 
-$conn->close(); // Close the database connection
 ?>
