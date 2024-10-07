@@ -53,7 +53,7 @@ include '../includes/get_user.php';
         
                             <label for="image" class="img_cont">
                                 <img class="profile_img" src ='<?php echo $user["image"]; ?>' >
-                                <input type="file" id="image" name="userImg" hidden>
+                                <input type="file" id="image" name="userImg" value="<?php echo $user["image"]; ?>" hidden>
                             </label>
         
                             

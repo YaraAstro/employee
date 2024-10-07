@@ -61,6 +61,7 @@ include '../includes/get_user.php';
                 ?>
                 </div>
                 <a class="button" href="../pages/pricing.php">Change Subscription</a>
+                <a class="button" href="../includes/remove_pckg.php">Remove Subscription</a>
             </div>
         </div>
 

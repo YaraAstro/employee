@@ -98,6 +98,7 @@ form .button_row {
     width: 80%;
 }
 
+.delete_btn ,
 form .button_row button {
     border: none;
     flex: 1;
@@ -115,6 +116,15 @@ form input:focus,
 form textarea:focus,
 form input:hover,
 form textarea:hover,
-form .button_row button:hover {
+form .button_row button:hover,
+.delete_btn:hover  {
     box-shadow: 0 2px 5px rgba(31, 19, 11, 0.664);
+}
+
+
+.delete_btn {
+    width: 50%;
+    margin-top: 25px;
+    letter-spacing: 2px;
+    text-align: center;
 }

@@ -120,6 +120,7 @@ include '../includes/get_user.php';
             ?>
                 </div>
                 <a class="pckg" href="../pages/pricing.php">Change Subscription</a>
+                <a class="pckg" href="../includes/remove_pckg.php">Remove Subscription</a>
             </div>
 
         </div>

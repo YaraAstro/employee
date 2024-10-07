@@ -21,13 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check for file upload errors
     if ($_FILES['userImg']['error'] !== UPLOAD_ERR_OK) {
         echo 'File upload error!';
-        exit();
+        
     }
 
     // Move the uploaded file
     if (!move_uploaded_file($_FILES['userImg']['tmp_name'], $image_path)) {
         echo 'Failed to move uploaded file.';
-        exit();
+        
     }
 
     // Prepare the SQL statement

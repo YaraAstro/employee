@@ -17,25 +17,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $profile = $user_id . '_profile_picture.' . pathinfo($_FILES['add_image']['name'], PATHINFO_EXTENSION);
     $profile_path = '../documents/candidate/profile/' . $profile;
 
-    if (move_uploaded_file($_FILES['add_image']['tmp_name'], $profile_path)) {
-        // Prepare the SQL statement for updating the candidate
-        $update_stmt = $conn->prepare("UPDATE candidate SET first_name = ?, last_name = ?, email = ?, mobile_no = ?, date_of_birth = ?, image = ?, user_comment = ? WHERE id = ?");
-
-        // Bind parameters (assuming user_id is an integer)
-        $update_stmt->bind_param('ssssssss', $firstName, $lastName, $email, $contactNo, $dob, $profile_path, $userComment, $user_id);
-
-        // Execute the statement
-        if ($update_stmt->execute()) {
-            header("Location: ../dashboard/candidate_dashboard.php");
-            exit();
-        } else {
-            echo "Error updating profile: " . $stmt->error;
-        }
-
-        $update_stmt -> close();
-
+    // Check for file upload errors
+    if ($_FILES['add_image']['error'] !== UPLOAD_ERR_OK) {
+        echo 'File upload error!';  
     }
 
+    // Move the uploaded file
+    if (!move_uploaded_file($_FILES['add_image']['tmp_name'], $profile_path)) {
+        echo 'Failed to move uploaded file.';
+    }
+
+    
+    // Prepare the SQL statement for updating the candidate
+    $update_stmt = $conn->prepare("UPDATE candidate SET first_name = ?, last_name = ?, email = ?, mobile_no = ?, date_of_birth = ?, image = ?, user_comment = ? WHERE id = ?");
+
+    // Bind parameters (assuming user_id is an integer)
+    $update_stmt->bind_param('ssssssss', $firstName, $lastName, $email, $contactNo, $dob, $profile_path, $userComment, $user_id);
+
+    // Execute the statement
+    if ($update_stmt->execute()) {
+        header("Location: ../dashboard/candidate_dashboard.php");
+        exit();
+    } else {
+        echo "Error updating profile: " . $stmt->error;
+    }
+
+    $update_stmt -> close();
 }
 
 $conn -> close();

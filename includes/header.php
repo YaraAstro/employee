@@ -61,8 +61,8 @@ include "../includes/config.php";
 
                 <!-- if user didn't sign in yet -->
                 <div class="header-action">
-                    <a class="buttons" href="">Sign in</a>
-                    <a class="buttons" href="">Sign up</a>
+                    <a class="buttons" href="../login/login.php">Sign in</a>
+                    <a class="buttons" href="../register/register.html">Sign up</a>
                 </div>
 
                 <!-- if user has already logged in -->

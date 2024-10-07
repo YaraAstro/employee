@@ -63,6 +63,8 @@ include '../includes/get_user.php';
                     <button type="submit">Update</button>
                 </div>
 
+                <a class="delete_btn" href="../includes/delete_user.php">Delete User</a>
+
             </form>
         </div>
     </main>
