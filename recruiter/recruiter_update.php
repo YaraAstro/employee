@@ -52,7 +52,7 @@ include '../includes/get_user.php';
                             <textarea id="add_message" name="add_message"><?php echo $user['add_message']; ?></textarea>
         
                             <label for="image" class="img_cont">
-                                <img class="profile_img" src ='<?php echo $user["image"]; ?>' >
+                                <img id="showPic" class="profile_img" src ='<?php echo $user["image"]; ?>' >
                                 <input type="file" id="image" name="userImg" hidden>
                             </label>
         
@@ -70,6 +70,21 @@ include '../includes/get_user.php';
             </div>
         </div>
     </main>
+
+    <script>
+        // image upload
+        let getImg = document.getElementById('image');
+        getImg.addEventListener('change', (event) => {
+            let pic = event.target.files[0];
+            if (pic) {
+                let showImg = document.getElementById('showPic');
+                let newSrc = URL.createObjectURL(pic);
+
+                showImg.src = newSrc;
+                showImg.onload = () => URL.revokeObjectURL(newSrc)
+            }
+        });
+    </script>
 
 <?php
     include_once '../includes/header.php'; 

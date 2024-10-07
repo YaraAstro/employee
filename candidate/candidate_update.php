@@ -54,8 +54,8 @@ include '../includes/get_user.php';
                     </fieldset>
                 </section>
                 <label for="add_image">
-                    <img src="<?php echo $user['image'] ?>" alt="">
-                    <input value="<?php echo $user['image'] ?>" type="file" name="add_image" id="add_image" hidden>
+                    <img id="showPic" src="<?php echo $user['image'] ?>" alt="">
+                    <input type="file" name="add_image" id="add_image" hidden>
                 </label>
 
                 <div class="button_row">
@@ -68,6 +68,21 @@ include '../includes/get_user.php';
             </form>
         </div>
     </main>
+
+    <script>
+        // image upload
+        let getImg = document.getElementById('add_image');
+        getImg.addEventListener('change', (event) => {
+            let pic = event.target.files[0];
+            if (pic) {
+                let showImg = document.getElementById('showPic');
+                let newSrc = URL.createObjectURL(pic);
+
+                showImg.src = newSrc;
+                showImg.onload = () => URL.revokeObjectURL(newSrc)
+            }
+        });
+    </script>
 
 <?php
     include '../includes/footer.php';
