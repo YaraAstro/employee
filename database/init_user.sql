@@ -1,4 +1,4 @@
-CREATE DATABASE esmdb;
+CREATE DATABASE emsdb;
 
 CREATE USER 'emsadmin'@'localhost' IDENTIFIED BY 'ems2024';
 

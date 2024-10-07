@@ -14,20 +14,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dob = $_POST['dob'];
     $userComment = $_POST['comment'];
 
-    $profile = $user_id . '_profile_picture.' . pathinfo($_FILES['add_image']['name'], PATHINFO_EXTENSION);
-    $profile_path = '../documents/candidate/profile/' . $profile;
+    $profile_path = null;
 
-    // Check for file upload errors
-    if ($_FILES['add_image']['error'] !== UPLOAD_ERR_OK) {
-        echo 'File upload error!';  
+    // Check if an image was uploaded
+    if (isset($_FILES['add_image']) && $_FILES['add_image']['error'] === UPLOAD_ERR_OK) {
+        $profile = $user_id . '_profile_picture.' . pathinfo($_FILES['add_image']['name'], PATHINFO_EXTENSION);
+        $profile_path = '../documents/candidate/profile/' . $profile;
+
+        // Move the uploaded file
+        if (!move_uploaded_file($_FILES['add_image']['tmp_name'], $profile_path)) {
+            echo 'Failed to move uploaded file.';
+            exit();
+        }
+    } else {
+        // Optionally fetch the existing image path from the database
+        $result = $conn->query("SELECT image FROM candidate WHERE id = '$user_id'");
+        if ($result && $row = $result->fetch_assoc()) {
+            $profile_path = $row['image']; // Retain existing image path if no new image is uploaded
+        }
     }
 
-    // Move the uploaded file
-    if (!move_uploaded_file($_FILES['add_image']['tmp_name'], $profile_path)) {
-        echo 'Failed to move uploaded file.';
-    }
-
-    
     // Prepare the SQL statement for updating the candidate
     $update_stmt = $conn->prepare("UPDATE candidate SET first_name = ?, last_name = ?, email = ?, mobile_no = ?, date_of_birth = ?, image = ?, user_comment = ? WHERE id = ?");
 
@@ -39,12 +45,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: ../dashboard/candidate_dashboard.php");
         exit();
     } else {
-        echo "Error updating profile: " . $stmt->error;
+        echo "Error updating profile: " . $update_stmt->error;
     }
 
-    $update_stmt -> close();
+    $update_stmt->close();
 }
 
-$conn -> close();
+$conn->close();
 
 ?>

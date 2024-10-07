@@ -13,28 +13,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $addMessage = $_POST['add_message'];
 
-    // File upload
-    $imageExtension = pathinfo($_FILES['userImg']['name'], PATHINFO_EXTENSION);
-    $profile_picture = $userId . '_profile_picture.' . $imageExtension;
-    $image_path = '../documents/recruiter/profile/' . $profile_picture;
+    $image_path = null;
 
-    // Check for file upload errors
-    if ($_FILES['userImg']['error'] !== UPLOAD_ERR_OK) {
-        echo 'File upload error!';
-        
-    }
+    // Check if an image was uploaded
+    if (isset($_FILES['userImg']) && $_FILES['userImg']['error'] === UPLOAD_ERR_OK) {
+        $imageExtension = pathinfo($_FILES['userImg']['name'], PATHINFO_EXTENSION);
+        $profile_picture = $userId . '_profile_picture.' . $imageExtension;
+        $image_path = '../documents/recruiter/profile/' . $profile_picture;
 
-    // Move the uploaded file
-    if (!move_uploaded_file($_FILES['userImg']['tmp_name'], $image_path)) {
-        echo 'Failed to move uploaded file.';
-        
+        // Move the uploaded file
+        if (!move_uploaded_file($_FILES['userImg']['tmp_name'], $image_path)) {
+            echo 'Failed to move uploaded file.';
+            exit();
+        }
+    } else {
+        // Fetch the existing image path from the database
+        $result = $conn->query("SELECT image FROM recruiter WHERE id = '$userId'");
+        if ($result && $row = $result->fetch_assoc()) {
+            $image_path = $row['image']; // Retain existing image path
+        }
     }
 
     // Prepare the SQL statement
     $update_sql = "UPDATE recruiter SET user_name = ?, mobile_no = ?, company = ?, email = ?, add_message = ?, image = ? WHERE id = ?";
+    
     if ($update_stmt = $conn->prepare($update_sql)) {
         // Bind parameters
-        $update_stmt->bind_param("sssssss", $userName, $mobileNo, $company, $email, $addMessage, $image_path, $userId);
+        $update_stmt->bind_param("ssssssi", $userName, $mobileNo, $company, $email, $addMessage, $image_path, $userId);
 
         // Execute the statement
         if ($update_stmt->execute()) {
@@ -51,4 +56,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+$conn->close(); // Close the database connection
 ?>
