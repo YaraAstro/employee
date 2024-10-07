@@ -24,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Generate user ID
         $user_id = createID('C', $reg_type, $conn);
-        $dashboard_path = '../dashboard/candidate_dashboard.php';
 
         // Handle file upload
         $resume = $user_id . '_resume.' . pathinfo($_FILES['cv_file']['name'], PATHINFO_EXTENSION);
@@ -37,8 +36,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("ssssssssssss", $user_id, $firstName, $lastName, $gender, $dateOfBirth, $mobileNo, $email, $experience, $img_path, $resume, $addComment, $password);
 
             if ($stmt->execute()) {
+                
+                session_start();
+
+                $_SESSION['user_id'] = $user_id ;
+                $_SESSION['user_type'] = 'candidate';
+            
                 echo "Candidate registered successfully.";
-                header("Location: $dashboard_path");
+                header("Location: ../dashboard/candidate_dashboard.php");
                 exit();
             } else {
                 echo "Error: " . $stmt->error;
@@ -59,7 +64,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Generate user ID
         $user_id = createID('R', $reg_type, $conn);
-        $dashboard_path = '../dashboard/recruiter_dashboard.php';
 
         // Prepare SQL statement
         $sql = "INSERT INTO recruiter (id, user_name, mobile_no, company, email, add_message, image, user_password) 
@@ -68,8 +72,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ssssssss", $user_id, $name, $mobileNoRecruiter, $company, $emailRecruiter, $commentRecruiter, $img_path, $password);
 
         if ($stmt->execute()) {
+
+            session_start();
+
+            $_SESSION['user_id'] = $user_id ;
+            $_SESSION['user_type'] = 'recruiter';
+
             echo "Recruiter registered successfully.";
-            header("Location: $dashboard_path");
+            header("Location: ../dashboard/recruiter_dashboard.php");
             exit();
         } else {
             echo "Error: " . $stmt->error;
